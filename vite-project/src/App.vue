@@ -1,17 +1,19 @@
 <script setup>
 import UserCard from './components/UserCard.vue'
+const showAlert = (userName) => {
+  alert(`Viewing profile of:` + userName);
+}
 </script>
 
 <template>
   <div class = "container">
   <h1>Team Members</h1>
     <div class="member_list">
-      <UserCard class = "member-card" name = "👧Melody" role = "Developer"/>
-      <UserCard class = "member-card" name = "👦John" role = "Tester"/>
-      <UserCard class = "member-card" name = "👧Alice" role = "Product Manager"/>
+      <UserCard class = "member-card" name = "👧Melody" role = "Developer" status = "Online" @view-profile="showAlert"/>
+      <UserCard class = "member-card" name = "👦John" role = "Tester" status = "Online" @view-profile="showAlert"/>
+      <UserCard class = "member-card" name = "👧Alice" role = "Product Manager" status = "Offline" @view-profile="showAlert"/>
     </div>
 </div>
->>>>>>> a1b8aa9 (Day 3 component task)
 </template>
 <style>
 h1{
