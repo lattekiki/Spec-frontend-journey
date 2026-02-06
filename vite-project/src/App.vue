@@ -1,46 +1,61 @@
 <script setup>
-import UserCard from './components/UserCard.vue'
-const showAlert = (userName) => {
-  alert(`Viewing profile of:` + userName);
-}
+import { ref } from 'vue'
+ const counter = ref(0)
+ const increment = () => {
+    counter.value++
+ }
+ const decrement = () => {
+    counter.value-- 
+ }
 </script>
 
+
 <template>
-  <div class = "container">
-  <h1>Team Members</h1>
-    <div class="member_list">
-      <UserCard class = "member-card" name = "👧Melody" role = "Developer" status = "Online" @view-profile="showAlert"/>
-      <UserCard class = "member-card" name = "👦John" role = "Tester" status = "Online" @view-profile="showAlert"/>
-      <UserCard class = "member-card" name = "👧Alice" role = "Product Manager" status = "Offline" @view-profile="showAlert"/>
+
+    <div class="counter-container"> 
+       <h1>Counter: {{ counter }}</h1>
+       <div class = "btn-container">
+        <button @click="increment" > +</button>
+        <button @click="decrement" :disabled="counter<=0">-</button>
+        </div>
     </div>
-</div>
 </template>
-<style>
-h1{
-    margin-bottom: 40px;
-    text-align: center;
-    color: rgb(224, 237, 237);
-    font-size: 40px;
-}
-.container{
+
+<style scoped>
+.counter-container{
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
     justify-content: center;
-    min-height: 100vh;
+    width: 90vw;
+    height: 100vh;
+  }
+h1{
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: blueviolet;
 }
+  .btn-container{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin-top: 20px;
+    size: 60px;
+    button{
+        background-color: rgb(24, 3, 50);
+        border: 2px solid #6b1250;
+        border-radius: 20px;
+        padding: 20px;
+        width: 150px; 
+        font-size: 20px;
+        text-align: center;
+        color: white;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+  }
+  :disabled{
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 
-.member_list{
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  justify-content: center; 
-}
-
-.member-card{
-  font-size: 20px;
-}
-
-</style>
-
+  </style>
